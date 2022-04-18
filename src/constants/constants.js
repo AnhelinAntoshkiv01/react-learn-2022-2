@@ -1,7 +1,10 @@
-const constants = {
-    apiUrl: 'https://jsonplaceholder.typicode.com/'
-};
+const baseURL = process.env.REACT_APP_API;
 
+const urls = {
+    cars: '/cars'
+}
+
+export default baseURL
 export {
-    constants
+    urls
 }
