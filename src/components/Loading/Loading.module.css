@@ -1,0 +1,9 @@
+.wrapper {
+    font-size: 25px;
+    width: 100%;
+    min-width: 200px;
+    color: orangered;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

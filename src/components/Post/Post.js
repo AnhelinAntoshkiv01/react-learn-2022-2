@@ -1,8 +1,17 @@
-export  const Post = ({post}) => {
+import {Button} from '../Button/Button';
+
+const Post = ({post, flag}) => {
+    const {id, title} = post;
     return (
         <div>
-            <span>{post.title}</span>
-            <hr/>
+            {id}  {title}
+            {
+                flag && <Button to={`${id}`} state={post}>Get Details</Button>
+            }
         </div>
-    )
-}
+    );
+};
+
+export {
+    Post
+};

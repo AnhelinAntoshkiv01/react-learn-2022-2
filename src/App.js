@@ -1,14 +1,29 @@
-import './App.css';
-import { Comments, Posts, Users } from './components';
+import {Navigate, Route, Routes} from "react-router-dom";
 
-export const App = () => {
-  return (
-      <div>
-        <div className={'users_posts'}>
-          <Users/>
-          <Posts/>
-        </div>
-        <Comments/>
-      </div>
-  );
+import './App.css';
+import {MainLayout} from "./layouts";
+import {AboutPage, HomePage, NotFoundPage, PostsPage, SinglePostPage, UsersPage, SingleUserPage} from "./pages";
+
+const App = () => {
+    return (
+        <Routes>
+            <Route path={'/'} element={<MainLayout/>}>
+                <Route index element={<Navigate to={'home'}/>}/>
+                <Route path={'home'} element={<HomePage/>}/>
+                <Route path={'users'} element={<UsersPage/>}>
+                    <Route path={':userId'} element={<SingleUserPage/>}>
+                        <Route path={'posts'} element={<PostsPage/>}/>
+                    </Route>
+                </Route>
+                <Route path={'posts'} element={<PostsPage/>}>
+                    <Route path={':id'} element={<SinglePostPage/>}/>
+                </Route>
+                <Route path={'about'} element={<AboutPage/>}/>
+                <Route path={'*'} element={<NotFoundPage/>}/>
+            </Route>
+        </Routes>
+    );
 }
+
+
+export default App;

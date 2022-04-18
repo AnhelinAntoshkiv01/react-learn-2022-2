@@ -1,12 +1,10 @@
-import './User.module.css';
+import {Button} from '../Button/Button';
 
 export const User = ({user}) => {
+    const {id, name} = user;
     return (
-        <div className={user.id % 2 ? 'red': 'green'}>
-            <span>{user.username}</span>
-            <span>{user.email}</span>
-            <span>{user.name}</span>
-            <hr/>
+        <div>
+            {id}, {name} <Button state={user} to={id.toString()}>Show Info</Button>
         </div>
-    )
-}
+    );
+};
